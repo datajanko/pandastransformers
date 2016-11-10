@@ -11,8 +11,8 @@ class SelectColumnsTransfomer(BaseEstimator, TransformerMixin):
     ----------
     columns : list of str, names of the dataframe columns to select
         Default: []
-
     """
+    
     def __init__(self, columns=[]):
         self.columns = columns
 
@@ -25,7 +25,6 @@ class SelectColumnsTransfomer(BaseEstimator, TransformerMixin):
 
         Returns
         ----------
-
         trans : pandas DataFrame
             contains selected columns of X
         """
@@ -39,7 +38,6 @@ class SelectColumnsTransfomer(BaseEstimator, TransformerMixin):
         ----------
         X : pandas DataFrame
         y : default None
-
 
         Returns
         ----------
@@ -58,7 +56,6 @@ class DataFrameFunctionTransformer(BaseEstimator, TransformerMixin):
     func : function that acts on an array of the form [n_elements, 1]
         if impute is True, functions must return a float number, otherwise
         an array of the form [n_elements, 1]
-
     """
 
     def __init__(self, func, impute = False):
@@ -114,6 +111,7 @@ class DataFrameFeatureUnion(BaseEstimator, TransformerMixin):
     list_of_transformers : list of DataFrameTransformers
 
     """
+    
     def __init__(self, list_of_transformers):
         self.list_of_transformers = list_of_transformers
 
@@ -147,7 +145,6 @@ class DataFrameFeatureUnion(BaseEstimator, TransformerMixin):
         ----------
         self : object
         """
-
         self.fitted_transformers_ = []
         for transformer in self.list_of_transformers:
             fitted_trans = clone(transformer).fit(X, y=None, **fitparams)
